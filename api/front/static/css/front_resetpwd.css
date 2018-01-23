@@ -1,0 +1,11 @@
+h1{
+	text-align: center;
+}
+.container{
+	max-width: 300px;
+	margin:50px auto;
+}
+
+.error-p p{
+	text-align: center;
+}

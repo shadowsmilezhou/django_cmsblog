@@ -1,0 +1,92 @@
+{% extends "cms_base_manager.html" %}
+{% load static %}
+{% block headbaseblock %}
+	{{block.super}}
+	<link rel="stylesheet" href="{% static 'css/cms_artical_manage.css' %}">
+	<script src="{% static 'js/cms_artical_manage.js' %}"></script>
+{% endblock headbaseblock %}
+{% block detailblock %}
+	<div class="row">
+		<div class="input-group clo-md-8 col-sm-8">
+			<span class="input-group-addon">按分类</span>
+			<select name="" id="category-select" class="form-control">
+				<option value="0">全部</option>
+				{% for category in categorys %}
+					<option value="{{category.id}}" {% if c_category == category.id %}
+						selected="selected"
+					{% endif %}>
+					{{category.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<table class="table tabel-striped">
+			<thead>
+				<th>标题</th>
+				<th>发表时间</th>
+				<th>分类</th>
+				<th>阅读</th>
+				<th>评论</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				{% for artical in articals %}
+					<tr data-artical-id="{{artical.uid}}">
+						<td><a href="">
+							{% if artical.top %}
+								<span class="top-title-word">[置顶]</span>
+							{% endif %}
+						{{artical.title}}
+						</a></td>
+						<td>{{artical.release_time|date:'Y年m月d日 H:i:s'}}</td>
+						<td>{{artical.category.name}}</td>
+						<td>{{artical.read_count}}</td>
+						<td>0</td>
+						<td>
+						<a href="{% url 'cms_edit_artical' pk=artical.uid %}">编辑</a>|
+						<a href="#" class="top-artical-btn">{% if artical.top %}
+							取消置顶
+						{% else %}
+							置顶
+						{% endif %}
+						</a>|
+						<a href="#" class="delete-artical-btn">删除</a>|
+						</td>
+							
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="row" >
+		<nav class="page-nav">
+			<ul class="pagination">
+				<li {% if c_page <= 1 %}class="disabled"{% endif %}>
+					{% if c_page > 1 %}
+						<a href="{% url 'cms_artical_manage' page=c_page|add:-1 category_id=c_category %}">&laquo;</a>
+					{% else %}
+						<a href="#">&laquo;</a>
+					{% endif %}
+					
+				</li>
+				
+				{% for page in pages %}
+				<li {% if c_page == page %}class='active'{% endif %}>
+					<a href="{% url 'cms_artical_manage' page=page category_id=c_category %}">{{page}}</a>
+				</li>
+				{% endfor %}
+				
+				<li {% if c_page == t_page %}class="disabled"{% endif %}>
+					{% if c_page < t_page %}
+						
+					<a href="{% url 'cms_artical_manage' page=c_page|add:1 category_id=c_category %}">&raquo;</a>
+					{% else %}
+					<a href="#">&raquo;</a>
+					{% endif %}
+					</li>
+			</ul>
+			
+		</nav>
+	</div>
+{% endblock detailblock %}

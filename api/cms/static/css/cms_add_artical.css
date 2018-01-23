@@ -1,0 +1,14 @@
+.content-box{
+	padding-top: 80px;
+
+}
+h1{
+	text-align: center;
+	padding-bottom: 40px;
+}
+.container{
+	max-width: 900px;
+}
+.input-group .form-control{
+	z-index: 0;
+}

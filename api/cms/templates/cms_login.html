@@ -1,0 +1,33 @@
+{% extends 'cms_bootstrap.html' %}
+{% load static %}
+{% block headblock %}
+    <link rel="stylesheet" href="{% static 'css/cms_login.css' %}">
+    <script src="{% static 'js/cms_login.js' %}"></script>
+{% endblock %}
+{% block titleblock %}
+    CMS登录
+{% endblock %}
+
+{% block bodyblock %}
+   <div class="container">
+  		<form class="form-signin" role="form" method='POST'>
+  			{%csrf_token%}
+    		<h2 class="form-signin-heading login_head">后台管理</h2>
+    		<input type="text" class="form-control" placeholder="用户名" name="username" required autofocus>
+    		<input type="password" class="form-control" placeholder="密码" name="password" required>
+    		<div class="input-group">
+                <input type="text" class="form-control" required placeholder="验证码" name="captcha">
+                <span class="input-group-addon">
+                    <img class="captcha-imgs" src="{% url 'comm_captcha' %}" alt="点击刷新验证码"  >
+                </span>
+            </div>
+            <p class="text-danger error-p">{{error}}</p>
+    		<div class="checkbox">
+      			<label>
+        		<input type="checkbox" value="remember-me" name="remember"> 记住我
+      			</label>
+    		</div>
+    		<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+  		</form>
+	</div>
+{% endblock %}

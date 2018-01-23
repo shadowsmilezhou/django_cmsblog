@@ -1,0 +1,10 @@
+.captcha-span{
+	padding: 2px;
+}
+.captcha-span img{
+	height: 25px;
+}
+
+.captcha-img{
+	cursor: pointer;
+}

@@ -1,0 +1,64 @@
+{% extends "front_base.html" %}
+
+{% load static %}
+
+{% block headblock %}
+	{{block.super}}
+	<link rel="stylesheet" href="{% static 'css/front_artical_list.css' %}">
+	<script src="{% static 'js/front_artical_list.js' %}"></script>
+	<script src='{% static "js/front_base.js" %}'></script>
+	<script src='{% static "js/arttemplate.js" %}'></script>
+	<script src='{% static "js/xttemplate.js" %}'></script>
+	<script src="{% static 'js/xtajax.js' %}"></script>
+	{% include "front_articallist_tpl.html" %}
+{% endblock headblock %}
+
+{% block detailblock %}
+	<div class="row">
+		{% if c_category %}
+		<h1 class="page-header">{{c_category.name}}</h1>
+		{% else %}
+		<h1 class="page-header">全部文章</h1>
+		{% endif %}
+	</div>
+
+	<div class="row">
+		{% for artical in top_articals %}
+			<div class="col-md-4 col-sm-4" class="top-artical-box">
+				<div class="thumbnail">
+					<div class="thumbnail-box">
+						<a href="{% url 'front_artical_detail' artical_id=artical.uid %}"><img src="{{artical.thumbnail}}" alt=""></a>
+					</div>
+					<div class="caption">
+						<a href="{% url 'front_artical_detail' artical_id=artical.uid %}"><h3>{{artical.title}}</h3></a>
+						<p>{{artical.desc}}</p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="row" id="artical-list-box">
+		{% for artical in articals %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="{% url 'front_artical_detail' artical_id=artical.uid %}">{{artical.title}}</a>
+				</div>
+				<div class="panel-body">
+					{% if artical.desc %}
+					<p>{{artical.desc}}</p>
+					{% else %}
+					{{artical.content_html|truncatechars_html:100|striptags}} {# 为了将其html标签解读 #}
+					{% endif %}
+				</div>
+				<div class="artical-info">
+					<span>阅读：{{artical.read_count}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<span>评论：10</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<span>发表时间：{{artical.release_time|date:"Y/m/d H:i"}}</span>
+				</div>
+			</div>
+			
+		{% endfor %}
+	</div>
+	<button class="btn btn-primary load-artical-btn" data-current-page="{{c_page}}" data-category-id="{{c_category.id}}" data-loading-text="加载中。。。">加载更多</button>
+{% endblock detailblock %}

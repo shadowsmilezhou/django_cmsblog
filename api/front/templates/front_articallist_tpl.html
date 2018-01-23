@@ -1,0 +1,17 @@
+<script id='artical-list-tpl' type="text/html">
+	{% verbatim %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				{{artical.title}}
+			</div>
+			<div class="panel-body">
+				<p>{{artical.desc}}</p>
+				<div class="artical-info">
+					<span>阅读：{{artical.read_count}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<span>评论：10</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<span>发表时间：{{artical.release_time | dateFormat:'yyyy/MM/dd hh:mm'}}</span>
+				</div>
+			</div>
+		</div>
+	{% endverbatim %}
+</script>

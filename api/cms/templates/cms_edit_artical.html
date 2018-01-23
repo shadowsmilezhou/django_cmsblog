@@ -1,0 +1,36 @@
+{% extends "cms_base_artical.html" %}
+{% load static %}
+
+{% block titleblock %}
+	编辑文章
+{% endblock titleblock %}
+
+{% block pagetitleblock %}
+	编辑文章
+{% endblock pagetitleblock %}
+
+{% block edittitleblock %}
+	value="{{artical.title}}"
+{% endblock edittitleblock %}
+
+{% block selectedblock %}
+	{% if artical.category.id == category.id %}
+		selected="selected"
+	{% endif %}
+{% endblock selectedblock %}
+
+{% block descblock %}
+	value="{{artical.desc}}"
+{% endblock descblock %}
+
+{% block thumbinputblock %}
+	value="{{artical.thumbnail}}"	
+{% endblock thumbinputblock %}
+
+{% block textareablock %}
+	{{artical.content_html}}
+{% endblock textareablock %}
+
+{% block publishblock %}
+	保存文章
+{% endblock publishblock %}

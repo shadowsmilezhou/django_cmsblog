@@ -1,0 +1,6 @@
+{% extends "cms_base_emailresult.html" %}
+{% block bodyblock %}
+	<class class="alert alert warning">
+		抱歉，邮件发送失败，请稍后再试！<span class="second-down">10</span>秒后<a href="{% url 'cms_index' %}" class="alert-link">跳转到主页</a>
+	</class>
+{% endblock bodyblock %}

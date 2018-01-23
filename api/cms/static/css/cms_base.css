@@ -1,0 +1,15 @@
+.page-box{
+    margin-top: 50px;
+}
+
+.dropdown-toggle:hover .caret{
+	transform: rotateZ(180deg);
+}
+
+.dropdown:hover .dropdown-menu{
+	display: block;
+}
+h1{
+	text-align: center;
+}
+

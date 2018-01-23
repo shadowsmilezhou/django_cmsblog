@@ -1,0 +1,7 @@
+{% extends "cms_base_emailresult.html" %}
+
+{% block bodyblock %}
+	<div class="alert alert-success">
+		邮件发送成功,<span class="second-down">10</span>秒后<a href="{% url 'cms_index' %}" class="alert-link">跳转到主页</a>
+	</div>
+{% endblock bodyblock %}

@@ -1,0 +1,16 @@
+h1{
+	text-align: center;
+}
+.container{
+	max-width: 300px;
+	
+	margin:50px auto;
+}
+
+.captcha-span{
+	padding: 1px;
+}
+.captcha-span img{
+	height: 25px;
+	cursor: pointer;
+}

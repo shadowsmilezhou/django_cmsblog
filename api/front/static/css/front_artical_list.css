@@ -1,0 +1,21 @@
+.artical-info{
+	text-align: right;
+}
+.thumbnail-box {
+	height: 170px;
+}
+.thumbnail-box img{
+	width:100%;
+	min-height: 170px;
+	max-height: 170px;
+	display: block;
+
+}
+.load-artical-btn{
+	width: 200px;
+	margin: 0 auto;
+	display: block;
+}
+.page-header{
+	text-align: center;
+}

@@ -1,0 +1,24 @@
+{% extends "cms_base.html" %}
+{% load static %}
+
+{% block headbaseblock %}
+	<link rel="stylesheet" href="{% static 'css/cms_base_manage.css' %}">
+	<script src="{% static 'js/cms_base_manage.js' %}"></script>
+{% endblock headbaseblock %}
+
+{% block pageboxblock %}
+<h1>文章管理</h1>
+<div class="container">
+	<div class="row">
+		<ul class="nav nav-tabs" role="tablist" id='sub-nav' >
+		<li class="active" role="presentation"><a href="{% url 'cms_index' %}">文章管理</a></li>
+		<li  role="presentation"><a href="{% url 'cms_category_manage' %}">分类管理</a></li>
+		<li  role="presentation"><a href="#">评论管理</a></li>
+
+	</ul>
+	</div>
+	{% block detailblock %}
+		
+	{% endblock detailblock %}
+</div>
+{% endblock pageboxblock %}

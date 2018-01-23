@@ -1,0 +1,21 @@
+.table td:nth-of-type(1){
+	width: 50%;
+}
+.table td{
+	text-align: center;
+}
+.table td:nth-of-type(1){
+	text-align: left;
+}
+.table th{
+	text-align: center;
+}
+.table th:nth-of-type(1){
+	text-align:left;
+}
+.page-nav{
+	text-align: center;
+}
+.top-title-word{
+	color:#ff5500;
+}
